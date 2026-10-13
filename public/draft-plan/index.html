@@ -86,23 +86,7 @@
   <p>Kneebabyz Eatery is a pop-up eatery and caterer based in West Oakland, California, with about 10,200 Instagram followers. The goal is a professional website and a simple owner app that lets customers see where the pop-up is today, order food, and request catering, while giving the owner an easy way to update the daily location and review requests.</p>
   <p>The look follows the client's brief: red, black and yellow, with the Instagram logo and photos.</p>
 
-  <h2>2. Current status</h2>
-  <p>A working demo is live and can be shown at the client meeting:</p>
-  <p><a href="https://faisaljatt369.github.io/kneebabyz-eatery/">https://faisaljatt369.github.io/kneebabyz-eatery/</a></p>
-  <table>
-    <tr><th style="width:34%">Feature</th><th style="width:16%">Status</th><th>Notes</th></tr>
-    <tr><td>Brand look, logo, real photos</td><td><span class="tag done">Done</span></td><td>Photos are Instagram captures. Originals are needed for the final version.</td></tr>
-    <tr><td>What We Do, How It Works, FAQ</td><td><span class="tag done">Done</span></td><td>Draft wording. The client should review it.</td></tr>
-    <tr><td>Food menu with photos</td><td><span class="tag done">Done</span></td><td>Dishes taken from the client's posts. Prices are placeholders.</td></tr>
-    <tr><td>Cart and checkout</td><td><span class="tag next">Demo only</span></td><td>No payment taken yet.</td></tr>
-    <tr><td>Catering request form</td><td><span class="tag next">Demo only</span></td><td>Full field set built. Does not send anything yet.</td></tr>
-    <tr><td>Where to Find Us (regular spots)</td><td><span class="tag done">Done</span></td><td>Oakland Kaiser and Faction Brewing, taken from the client's flyers. To be confirmed.</td></tr>
-    <tr><td>Owner sets today's location</td><td><span class="tag next">Demo only</span></td><td>Saved in one browser only, with no login.</td></tr>
-    <tr><td>DoorDash ordering</td><td><span class="tag plan">Waiting</span></td><td>Needs the client's DoorDash storefront link.</td></tr>
-    <tr><td>Square payments</td><td><span class="tag plan">Planned</span></td><td>Needs client approval and account access.</td></tr>
-  </table>
-
-  <h2>3. Scope</h2>
+  <h2>2. Scope</h2>
   <div class="cols">
     <div>
       <h3>Public website</h3>
@@ -133,13 +117,13 @@
     <li>Custom reporting beyond a simple orders list</li>
   </ul>
 
-  <h2>4. Phased plan</h2>
+  <h2>3. Phased plan</h2>
   <p>Dates are estimates and depend on how quickly the client provides content and approvals.</p>
 
   <h3>Phase 1: Client meeting <span class="tag done">October 14</span></h3>
   <ul>
     <li>Present the live demo and walk through each feature.</li>
-    <li>Collect the content and decisions listed in sections 6 and 8.</li>
+    <li>Collect the content and decisions listed in sections 5 and 7.</li>
     <li>Ask the client to approve linking their Square account.</li>
   </ul>
 
@@ -169,7 +153,7 @@
     <li>Hand over a short guide for the owner: setting location, viewing orders.</li>
   </ul>
 
-  <h2>5. Technology</h2>
+  <h2>4. Technology</h2>
   <table>
     <tr><th style="width:28%">Part</th><th>Choice and reason</th></tr>
     <tr><td>Website</td><td>Next.js with TypeScript. One codebase for the site and the owner app.</td></tr>
@@ -189,7 +173,7 @@
     <li>The catering form includes a hidden field to catch bots.</li>
   </ul>
 
-  <h2>6. Content needed from the client</h2>
+  <h2>5. Content needed from the client</h2>
   <ul class="check">
     <li>Official business name</li>
     <li>Full menu with real prices, and photos of each dish</li>
@@ -201,7 +185,7 @@
     <li>Permission to use the Instagram photos on the website</li>
   </ul>
 
-  <h2>7. Costs</h2>
+  <h2>6. Costs</h2>
   <p>Estimated running costs, to be verified with current vendor pricing before quoting the client:</p>
   <table>
     <tr><th style="width:34%">Item</th><th style="width:26%">Estimate</th><th>Notes</th></tr>
@@ -213,7 +197,7 @@
   </table>
   <p>Planning range: about $25 to $60 per month in total.</p>
 
-  <h2>8. Decisions needed</h2>
+  <h2>7. Decisions needed</h2>
   <ol>
     <li><strong>Hosting account:</strong> Vercel or Cloudflare, under which company account.</li>
     <li><strong>Order handling:</strong> pickup at the pop-up, DoorDash delivery, or both.</li>
@@ -223,7 +207,7 @@
     <li><strong>Domain name:</strong> which name to register.</li>
   </ol>
 
-  <h2>9. Risks and how we handle them</h2>
+  <h2>8. Risks and how we handle them</h2>
   <table>
     <tr><th style="width:30%">Risk</th><th>Mitigation</th></tr>
     <tr><td>Client is slow to send content or approvals</td><td>Launch with clearly marked placeholders, replace them as content arrives.</td></tr>
@@ -234,7 +218,7 @@
     <tr><td>Fake orders or spam</td><td>Server-side validation, the bot trap field on forms, and rate limiting.</td></tr>
   </table>
 
-  <h2>10. Acceptance checklist</h2>
+  <h2>9. Acceptance checklist</h2>
   <ul class="check">
     <li>A customer can place a test order and pay through Square sandbox.</li>
     <li>Order totals are correct and cannot be changed from the browser.</li>
@@ -245,7 +229,7 @@
     <li>The owner has a short guide and knows how to update the location.</li>
   </ul>
 
-  <h2>11. Next steps</h2>
+  <h2>10. Next steps</h2>
   <ol>
     <li>Present the demo at the client meeting on October 14.</li>
     <li>Collect the content and decisions above.</li>
