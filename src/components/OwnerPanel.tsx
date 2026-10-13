@@ -38,12 +38,8 @@ export default function OwnerPanel() {
   }
 
   return (
-    <div className="card">
-      <h2>Set today&apos;s location</h2>
-      <p className="muted">
-        Demo mode: this is saved in this browser only and has no login. The real site has an owner login and shows the
-        location to every visitor.
-      </p>
+    <div className="panel">
+      <h2>Today&apos;s location</h2>
       <p className="current">
         <strong>Current:</strong> {location ? location.label : "Not set"}
       </p>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, type FormEvent } from "react";
+import { recordCateringRequest } from "@/lib/demoData";
 import { budgets, callTimes, contactMethods, eventTypes, heardFrom, menu, serviceTypes } from "@/lib/config";
 
 type Status = { kind: "idle" } | { kind: "error"; message: string } | { kind: "done" };
@@ -29,6 +30,13 @@ export default function CateringForm() {
       return;
     }
     // Demo only: the real build posts to a server action that validates again and emails the chef.
+    const fields: Record<string, string> = {};
+    data.forEach((value, key) => {
+      if (key !== "dishes" && key !== "website" && typeof value === "string" && value.trim()) {
+        fields[key] = value.trim().slice(0, 1500);
+      }
+    });
+    recordCateringRequest({ fields, dishes: data.getAll("dishes").map(String) });
     setStatus({ kind: "done" });
     form.reset();
   }
