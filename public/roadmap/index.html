@@ -174,9 +174,9 @@ const ROADMAP = {
 
   milestones: [
     { name: "Draft review", date: "Oct 14" },
-    { name: "Location and catering working", date: "Oct 17" },
-    { name: "Online ordering working", date: "Oct 21" },
-    { name: "Website live", date: "Oct 24" },
+    { name: "Location and catering working", date: "Oct 28" },
+    { name: "Online ordering working", date: "Nov 11" },
+    { name: "Website live", date: "Nov 20" },
   ],
 
   phases: [
@@ -189,21 +189,21 @@ const ROADMAP = {
     },
     {
       name: "Phase 2: Owner tools and catering",
-      when: "October 15 to 17", start: "2026-10-15", end: "2026-10-17", status: "upcoming", short: "Owner tools and catering",
+      when: "October 15 to 28", start: "2026-10-15", end: "2026-10-28", status: "upcoming", short: "Owner tools and catering",
       summary: "We set up the parts only you will use, and make sure catering requests reach you.",
       youGet: ["A secure owner login", "A button to set where you are today, by address or phone location", "Catering requests sent straight to your email"],
       needFromYou: ["The email address that should receive catering requests", "A phone to test the owner login with us"],
     },
     {
       name: "Phase 3: Online ordering",
-      when: "October 17 to 21", start: "2026-10-17", end: "2026-10-21", status: "upcoming", short: "Online ordering",
+      when: "October 29 to November 11", start: "2026-10-29", end: "2026-11-11", status: "upcoming", short: "Online ordering",
       summary: "Customers can order and pay online, using the Square account you already have.",
       youGet: ["Online ordering with payment through your Square account", "A DoorDash button for customers who prefer it", "A view of incoming orders with an alert for each new one"],
       needFromYou: ["Your approval to connect your Square account", "Your DoorDash storefront link"],
     },
     {
       name: "Phase 4: Your content and launch",
-      when: "October 21 to 24", start: "2026-10-21", end: "2026-10-24", status: "upcoming", short: "Content and launch",
+      when: "November 12 to 20", start: "2026-11-12", end: "2026-11-20", status: "upcoming", short: "Content and launch",
       summary: "We replace the sample content with yours, test everything, and go live.",
       youGet: ["Your real menu, prices, photos and hours on the site", "Your own web address", "Full testing on phones and computers", "A short guide and walkthrough call"],
       needFromYou: ["Your final menu and prices", "Original logo and photos, and permission to use them", "Your choice of web address"],
@@ -211,15 +211,15 @@ const ROADMAP = {
   ],
 
   needed: [
-    { item: "Feedback on the first draft", by: "Oct 15", received: false },
-    { item: "Confirmed regular spots and hours", by: "Oct 15" },
-    { item: "Phone number and email you want customers to see", by: "Oct 15" },
-    { item: "Final menu with prices", by: "Oct 16" },
-    { item: "Original logo and best photos, with permission to use them", by: "Oct 16" },
-    { item: "Email address for catering requests", by: "Oct 16" },
-    { item: "Approval and access to connect your Square account", by: "Oct 17" },
-    { item: "DoorDash storefront link", by: "Oct 17" },
-    { item: "Preferred web address", by: "Oct 20" },
+    { item: "Feedback on the first draft", by: "Oct 16", received: false },
+    { item: "Confirmed regular spots and hours", by: "Oct 16" },
+    { item: "Phone number and email you want customers to see", by: "Oct 16" },
+    { item: "Email address for catering requests", by: "Oct 21" },
+    { item: "Approval and access to connect your Square account", by: "Oct 29" },
+    { item: "DoorDash storefront link", by: "Oct 29" },
+    { item: "Final menu with prices", by: "Nov 5" },
+    { item: "Original logo and best photos, with permission to use them", by: "Nov 5" },
+    { item: "Preferred web address", by: "Nov 10" },
   ],
 
   afterLaunch: [
@@ -229,7 +229,7 @@ const ROADMAP = {
     "We agree together who holds each account, so nothing lapses after we hand over.",
   ],
 
-  note: "Dates are targets. They move if content or approvals arrive later than listed, and we will tell you straight away if that happens.",
+  note: "Dates are targets. The schedule leaves time for you to review and approve each phase. It moves if content or approvals arrive later than listed, and we will tell you straight away if that happens.",
 };
 /* ===================================================================== */
 
@@ -326,6 +326,7 @@ root.append(el("p", "muted", "Each bar shows when a phase takes place. Dates are
   const wrap = el("div", "gantt-wrap");
   const grid = el("div", "gantt");
   grid.style.gridTemplateColumns = "150px 1fr";
+  grid.style.minWidth = days > 20 ? "760px" : "560px";
   grid.style.setProperty("--days", String(days));
   grid.append(el("div", "cell corner", "Phase"));
   const head = el("div", "track");
@@ -334,7 +335,8 @@ root.append(el("p", "muted", "Each bar shows when a phase takes place. Dates are
   head.style.borderTop = "0";
   for (let i = 0; i < days; i++) {
     const d = new Date(start + i * DAY);
-    const label = i === 0 || d.getDate() === 1 ? d.toLocaleString("en-US", { month: "short", day: "numeric" }) : String(d.getDate());
+    const showLabel = days <= 14 || i === 0 || d.getDay() === 1;
+    const label = showLabel ? d.toLocaleString("en-US", { month: "short", day: "numeric" }) : "";
     const c = el("div", "cell", label);
     c.style.background = "var(--soft)";
     c.style.padding = "6px 0";
@@ -348,7 +350,7 @@ root.append(el("p", "muted", "Each bar shows when a phase takes place. Dates are
     const from = Math.round((day(phase.start) - start) / DAY) + 1;
     const to = Math.round((day(phase.end) - start) / DAY) + 2;
     const spanDays = to - from;
-    const bar = el("div", phase === lastPhase ? "bar launch" : "bar", spanDays >= 3 ? phase.when.replace(/October/g, "Oct") : "");
+    const bar = el("div", phase === lastPhase ? "bar launch" : "bar", spanDays >= 3 ? phase.when.replace(/October/g, "Oct").replace(/November/g, "Nov") : "");
     bar.title = phase.when;
     bar.style.gridColumn = `${from} / ${to}`;
     track.append(bar);
