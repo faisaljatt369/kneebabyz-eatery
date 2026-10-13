@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kneebabyz Eatery Website: Draft Development Plan</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #5f5f5f;
+    --line: #dcdcdc;
+    --soft: #f5f5f5;
+    --accent: #b81316;
+  }
+  * { box-sizing: border-box; }
+  html { background: #e9e9e9; }
+  body {
+    margin: 0;
+    padding: 32px 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .page {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 22mm 20mm;
+    background: #fff;
+    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.12);
+  }
+  header.doc { border-bottom: 3px solid var(--accent); padding-bottom: 18px; margin-bottom: 28px; }
+  .label { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 6px; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 0 0 10px; }
+  .meta { color: var(--muted); font-size: 13px; margin: 0; }
+  h2 { font-size: 19px; margin: 34px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  h3 { font-size: 15.5px; margin: 20px 0 6px; }
+  p { margin: 0 0 10px; }
+  ul, ol { margin: 0 0 12px; padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 16px; font-size: 13.5px; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--soft); font-weight: 700; }
+  .tag { display: inline-block; padding: 1px 9px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .tag.done { background: #e8f4ea; border-color: #b7dcbd; color: #1f6b2e; }
+  .tag.next { background: #fff4e0; border-color: #f0d49b; color: #8a5a00; }
+  .tag.plan { background: var(--soft); color: var(--muted); }
+  .note { background: var(--soft); border-left: 3px solid var(--accent); padding: 10px 14px; margin: 12px 0 16px; font-size: 14px; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .check li { list-style: none; position: relative; padding-left: 4px; }
+  .check { padding-left: 0; }
+  .check li::before { content: "[  ]"; font-family: ui-monospace, Menlo, monospace; color: var(--muted); margin-right: 8px; }
+  footer.doc { margin-top: 36px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; }
+  .print-btn { position: fixed; top: 16px; right: 16px; padding: 9px 16px; border: 1px solid #bbb; border-radius: 6px; background: #fff; font: inherit; font-size: 13px; cursor: pointer; }
+  .print-btn:hover { background: var(--soft); }
+  h2, h3 { break-after: avoid; }
+  table, .note { break-inside: avoid; }
+  @media (max-width: 700px) {
+    body { padding: 0; }
+    .page { padding: 20px 16px; box-shadow: none; }
+    .cols { grid-template-columns: 1fr; }
+    .print-btn { display: none; }
+    table { font-size: 12.5px; }
+    th, td { padding: 6px; }
+  }
+  @media print {
+    html, body { background: #fff; padding: 0; }
+    .page { box-shadow: none; padding: 0; max-width: none; }
+    .print-btn { display: none; }
+    @page { size: A4; margin: 16mm; }
+  }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print or save as PDF</button>
+
+<main class="page">
+  <header class="doc">
+    <p class="label">Draft development plan</p>
+    <h1>Kneebabyz Eatery Website and Owner App</h1>
+    <p class="meta">Prepared October 13, 2026 &nbsp;|&nbsp; Draft 1 &nbsp;|&nbsp; Client meeting: October 14, 2026 &nbsp;|&nbsp; Prepared by Faisal Jatt for Growing With Systems</p>
+  </header>
+
+  <h2>1. Overview</h2>
+  <p>Kneebabyz Eatery is a pop-up eatery and caterer based in West Oakland, California, with about 10,200 Instagram followers. The goal is a professional website and a simple owner app that lets customers see where the pop-up is today, order food, and request catering, while giving the owner an easy way to update the daily location and review requests.</p>
+  <p>The look follows the client's brief: red, black and yellow, with the Instagram logo and photos.</p>
+
+  <h2>2. Current status</h2>
+  <p>A working demo is live and can be shown at the client meeting:</p>
+  <p><a href="https://faisaljatt369.github.io/kneebabyz-eatery/">https://faisaljatt369.github.io/kneebabyz-eatery/</a></p>
+  <table>
+    <tr><th style="width:34%">Feature</th><th style="width:16%">Status</th><th>Notes</th></tr>
+    <tr><td>Brand look, logo, real photos</td><td><span class="tag done">Done</span></td><td>Photos are Instagram captures. Originals are needed for the final version.</td></tr>
+    <tr><td>What We Do, How It Works, FAQ</td><td><span class="tag done">Done</span></td><td>Draft wording. The client should review it.</td></tr>
+    <tr><td>Food menu with photos</td><td><span class="tag done">Done</span></td><td>Dishes taken from the client's posts. Prices are placeholders.</td></tr>
+    <tr><td>Cart and checkout</td><td><span class="tag next">Demo only</span></td><td>No payment taken yet.</td></tr>
+    <tr><td>Catering request form</td><td><span class="tag next">Demo only</span></td><td>Full field set built. Does not send anything yet.</td></tr>
+    <tr><td>Where to Find Us (regular spots)</td><td><span class="tag done">Done</span></td><td>Oakland Kaiser and Faction Brewing, taken from the client's flyers. To be confirmed.</td></tr>
+    <tr><td>Owner sets today's location</td><td><span class="tag next">Demo only</span></td><td>Saved in one browser only, with no login.</td></tr>
+    <tr><td>DoorDash ordering</td><td><span class="tag plan">Waiting</span></td><td>Needs the client's DoorDash storefront link.</td></tr>
+    <tr><td>Square payments</td><td><span class="tag plan">Planned</span></td><td>Needs client approval and account access.</td></tr>
+  </table>
+
+  <h2>3. Scope</h2>
+  <div class="cols">
+    <div>
+      <h3>Public website</h3>
+      <ul>
+        <li>Home page with today's location banner</li>
+        <li>What We Do, Where to Find Us, How It Works</li>
+        <li>Food menu with photos and online ordering</li>
+        <li>Photo gallery and Instagram links</li>
+        <li>Catering quote request</li>
+        <li>FAQ, contact details, hours</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Owner app</h3>
+      <ul>
+        <li>Secure owner login</li>
+        <li>Set today's location by address or GPS</li>
+        <li>View incoming orders</li>
+        <li>View catering requests</li>
+        <li>Installable on a phone home screen</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Out of scope for the first version</h3>
+  <ul>
+    <li>Delivery tracking, loyalty programs and gift cards</li>
+    <li>Native iOS or Android store apps (the owner app is a web app)</li>
+    <li>Custom reporting beyond a simple orders list</li>
+  </ul>
+
+  <h2>4. Phased plan</h2>
+  <p>Dates are estimates and depend on how quickly the client provides content and approvals.</p>
+
+  <h3>Phase 1: Client meeting <span class="tag done">October 14</span></h3>
+  <ul>
+    <li>Present the live demo and walk through each feature.</li>
+    <li>Collect the content and decisions listed in sections 6 and 8.</li>
+    <li>Ask the client to approve linking their Square account.</li>
+  </ul>
+
+  <h3>Phase 2: Real foundation <span class="tag plan">About Oct 15 to 17</span></h3>
+  <ul>
+    <li>Move hosting from GitHub Pages to a host that can run server code, under the dedicated company account.</li>
+    <li>Set up the database (Supabase) with row-level security on every table.</li>
+    <li>Build the owner login and save the location on the server so every visitor sees it.</li>
+    <li>Connect the catering form to a server that validates each request, emails the chef, and sends the lead into GHL.</li>
+    <li>Make the owner page installable on a phone.</li>
+  </ul>
+
+  <h3>Phase 3: Ordering and payments <span class="tag plan">About Oct 17 to 21</span></h3>
+  <ul>
+    <li>Connect Square in sandbox mode and test with fake payments.</li>
+    <li>Calculate prices on the server so a customer cannot change what they pay.</li>
+    <li>Show orders in the owner view and send the owner an alert.</li>
+    <li>Switch to the client's real Square account once approved.</li>
+    <li>Add the client's DoorDash storefront link.</li>
+  </ul>
+
+  <h3>Phase 4: Content and launch <span class="tag plan">About Oct 21 to 24</span></h3>
+  <ul>
+    <li>Add the real menu, prices, photos, logo and hours.</li>
+    <li>Connect a custom domain and basic search settings.</li>
+    <li>Test on phone and desktop, including the full order and catering flows.</li>
+    <li>Hand over a short guide for the owner: setting location, viewing orders.</li>
+  </ul>
+
+  <h2>5. Technology</h2>
+  <table>
+    <tr><th style="width:28%">Part</th><th>Choice and reason</th></tr>
+    <tr><td>Website</td><td>Next.js with TypeScript. One codebase for the site and the owner app.</td></tr>
+    <tr><td>Hosting</td><td>Vercel or Cloudflare under the company account (decision needed). The demo currently runs on GitHub Pages.</td></tr>
+    <tr><td>Database and login</td><td>Supabase, with row-level security and policies for select, insert, update and delete.</td></tr>
+    <tr><td>Payments</td><td>Square, using the client's existing account.</td></tr>
+    <tr><td>Catering email</td><td>A transactional email service (such as Resend) to the chef's inbox.</td></tr>
+    <tr><td>Leads and follow-up</td><td>GHL receives each catering request as a lead through a webhook.</td></tr>
+    <tr><td>Delivery orders</td><td>DoorDash, linked from the site.</td></tr>
+  </table>
+
+  <h3>Security</h3>
+  <ul>
+    <li>No secrets in the code. Square, email and database keys live only in environment variables.</li>
+    <li>Every form and order is validated again on the server, even though the browser also checks it.</li>
+    <li>Only the owner can change the location or view orders. This is enforced by the database, not by hiding buttons.</li>
+    <li>The catering form includes a hidden field to catch bots.</li>
+  </ul>
+
+  <h2>6. Content needed from the client</h2>
+  <ul class="check">
+    <li>Official business name</li>
+    <li>Full menu with real prices, and photos of each dish</li>
+    <li>Original logo file and the best original photos</li>
+    <li>Confirmed regular spots, days and hours (currently taken from flyers)</li>
+    <li>Phone number and email for customers (currently taken from Instagram)</li>
+    <li>DoorDash storefront link</li>
+    <li>Other social media handles, if any (Instagram and Threads are linked now)</li>
+    <li>Permission to use the Instagram photos on the website</li>
+  </ul>
+
+  <h2>7. Costs</h2>
+  <p>Estimated running costs, to be verified with current vendor pricing before quoting the client:</p>
+  <table>
+    <tr><th style="width:34%">Item</th><th style="width:26%">Estimate</th><th>Notes</th></tr>
+    <tr><td>Hosting</td><td>About $20 per month</td><td>Paid plan recommended for client work.</td></tr>
+    <tr><td>Database</td><td>Free to start, about $25 per month at larger scale</td><td>Free tier is enough for launch.</td></tr>
+    <tr><td>Email service</td><td>Free to start</td><td>Volume is low.</td></tr>
+    <tr><td>Domain</td><td>About $15 per year</td><td>Optional but recommended.</td></tr>
+    <tr><td>Square fees</td><td>Per transaction</td><td>Paid by the client under their existing Square terms.</td></tr>
+  </table>
+  <p>Planning range: about $25 to $60 per month in total.</p>
+
+  <h2>8. Decisions needed</h2>
+  <ol>
+    <li><strong>Hosting account:</strong> Vercel or Cloudflare, under which company account.</li>
+    <li><strong>Order handling:</strong> pickup at the pop-up, DoorDash delivery, or both.</li>
+    <li><strong>Catering deposits:</strong> take a deposit at booking, or quote first and invoice later.</li>
+    <li><strong>First-version scope:</strong> confirm which features are in the first release and which come later.</li>
+    <li><strong>Owner alerts:</strong> email, text message, or both for new orders and requests.</li>
+    <li><strong>Domain name:</strong> which name to register.</li>
+  </ol>
+
+  <h2>9. Risks and how we handle them</h2>
+  <table>
+    <tr><th style="width:30%">Risk</th><th>Mitigation</th></tr>
+    <tr><td>Client is slow to send content or approvals</td><td>Launch with clearly marked placeholders, replace them as content arrives.</td></tr>
+    <tr><td>Square access is delayed</td><td>Build and test everything in sandbox first, so going live is a short switch.</td></tr>
+    <tr><td>Photo quality and usage rights</td><td>Request original files and written permission before launch.</td></tr>
+    <tr><td>Location or spots are out of date</td><td>Owner updates the live location daily. Regular spots are reviewed with the client.</td></tr>
+    <tr><td>Scope grows during the build</td><td>Agree the first-version scope in writing (decision 4) and log extras for a later release.</td></tr>
+    <tr><td>Fake orders or spam</td><td>Server-side validation, the bot trap field on forms, and rate limiting.</td></tr>
+  </table>
+
+  <h2>10. Acceptance checklist</h2>
+  <ul class="check">
+    <li>A customer can place a test order and pay through Square sandbox.</li>
+    <li>Order totals are correct and cannot be changed from the browser.</li>
+    <li>The owner can log in, set today's location, and the banner updates for every visitor.</li>
+    <li>A catering request reaches the chef's email and appears as a lead in GHL.</li>
+    <li>The site works on phones and desktop, and the owner app installs on a phone.</li>
+    <li>No secrets in the code, and row-level security is on every table.</li>
+    <li>The owner has a short guide and knows how to update the location.</li>
+  </ul>
+
+  <h2>11. Next steps</h2>
+  <ol>
+    <li>Present the demo at the client meeting on October 14.</li>
+    <li>Collect the content and decisions above.</li>
+    <li>Create the hosting, database and email accounts under the company account.</li>
+    <li>Start Phase 2.</li>
+  </ol>
+
+  <footer class="doc">
+    This is a working draft and will change as the client provides content and approvals. Demo link: https://faisaljatt369.github.io/kneebabyz-eatery/
+  </footer>
+</main>
+</body>
+</html>
