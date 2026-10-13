@@ -120,10 +120,10 @@
   <h2>3. Phased plan</h2>
   <p>Dates are estimates and depend on how quickly the client provides content and approvals.</p>
 
-  <h3>Phase 1: Client meeting <span class="tag done">October 14</span></h3>
+  <h3>Phase 1: Client meeting <span class="tag plan">October 14</span></h3>
   <ul>
     <li>Present the live demo and walk through each feature.</li>
-    <li>Collect the content and decisions listed in sections 5 and 7.</li>
+    <li>Collect the content and decisions listed in sections 6 and 11.</li>
     <li>Ask the client to approve linking their Square account.</li>
   </ul>
 
@@ -153,7 +153,17 @@
     <li>Hand over a short guide for the owner: setting location, viewing orders.</li>
   </ul>
 
-  <h2>4. Technology</h2>
+  <h2>4. Timeline at a glance</h2>
+  <table>
+    <tr><th style="width:12%">Phase</th><th style="width:20%">Dates</th><th>Main deliverable</th><th style="width:30%">Depends on</th></tr>
+    <tr><td>1</td><td>Oct 14</td><td>Client meeting. Content and decisions collected.</td><td>Client availability</td></tr>
+    <tr><td>2</td><td>Oct 15 to 17</td><td>Hosting, database, owner login, catering email and GHL lead.</td><td>Company accounts created</td></tr>
+    <tr><td>3</td><td>Oct 17 to 21</td><td>Square ordering in sandbox, orders list, DoorDash link.</td><td>Square access, DoorDash link</td></tr>
+    <tr><td>4</td><td>Oct 21 to 24</td><td>Real content, domain, full testing, owner handover.</td><td>Menu, photos, hours, domain</td></tr>
+  </table>
+  <p>Target launch: about October 24, 2026, subject to the client providing content and approvals on time.</p>
+
+  <h2>5. Technology</h2>
   <table>
     <tr><th style="width:28%">Part</th><th>Choice and reason</th></tr>
     <tr><td>Website</td><td>Next.js with TypeScript. One codebase for the site and the owner app.</td></tr>
@@ -173,7 +183,7 @@
     <li>The catering form includes a hidden field to catch bots.</li>
   </ul>
 
-  <h2>5. Content needed from the client</h2>
+  <h2>6. Content needed from the client</h2>
   <ul class="check">
     <li>Official business name</li>
     <li>Full menu with real prices, and photos of each dish</li>
@@ -185,7 +195,44 @@
     <li>Permission to use the Instagram photos on the website</li>
   </ul>
 
-  <h2>6. Costs</h2>
+  <h2>7. Testing and quality</h2>
+  <ul>
+    <li><strong>Order flow:</strong> successful payment, declined card, cancelled checkout, and an empty or edited cart.</li>
+    <li><strong>Catering flow:</strong> missing fields, past dates, spam submissions, and delivery of the email and the GHL lead.</li>
+    <li><strong>Security checks:</strong> try owner-only actions while logged out, and try to change prices from the browser. Both must fail.</li>
+    <li><strong>Devices:</strong> iPhone Safari, Android Chrome, and desktop Chrome, Safari and Edge.</li>
+    <li><strong>Speed:</strong> compressed images and a fast first load on mobile data.</li>
+    <li><strong>Accessibility:</strong> keyboard navigation, readable contrast, labelled form fields.</li>
+  </ul>
+
+  <h2>8. Launch and after launch</h2>
+  <h3>Go-live checklist</h3>
+  <ul class="check">
+    <li>Switch Square from sandbox to the client's live account</li>
+    <li>Set all production keys as environment variables</li>
+    <li>Connect the custom domain and confirm the secure certificate</li>
+    <li>Create the owner account and test login on the owner's phone</li>
+    <li>Place one small real order and one catering request end to end</li>
+    <li>Confirm the owner receives order and catering alerts</li>
+  </ul>
+  <h3>After launch</h3>
+  <ul>
+    <li>Watch orders, errors and form delivery closely for the first week.</li>
+    <li>Fix bugs found after launch within an agreed support window (length to be agreed).</li>
+    <li>Provide the owner guide and a short walkthrough call.</li>
+    <li>Agree who owns and pays for each account (hosting, database, domain, email) so nothing lapses.</li>
+  </ul>
+
+  <h2>9. Privacy, legal and accessibility</h2>
+  <ul>
+    <li>Add a privacy policy and basic terms page, since the catering form collects names, phone numbers and emails.</li>
+    <li>Get written permission from the client to use their logo and photos.</li>
+    <li>Store customer data only in the database, never in the code, and keep payment card details with Square (the website never sees card numbers).</li>
+    <li>Add a cookie notice only if analytics or tracking is added.</li>
+    <li>Square and DoorDash terms and fees are handled by the client under their own accounts.</li>
+  </ul>
+
+  <h2>10. Costs</h2>
   <p>Estimated running costs, to be verified with current vendor pricing before quoting the client:</p>
   <table>
     <tr><th style="width:34%">Item</th><th style="width:26%">Estimate</th><th>Notes</th></tr>
@@ -197,7 +244,7 @@
   </table>
   <p>Planning range: about $25 to $60 per month in total.</p>
 
-  <h2>7. Decisions needed</h2>
+  <h2>11. Decisions needed</h2>
   <ol>
     <li><strong>Hosting account:</strong> Vercel or Cloudflare, under which company account.</li>
     <li><strong>Order handling:</strong> pickup at the pop-up, DoorDash delivery, or both.</li>
@@ -207,7 +254,7 @@
     <li><strong>Domain name:</strong> which name to register.</li>
   </ol>
 
-  <h2>8. Risks and how we handle them</h2>
+  <h2>12. Risks and how we handle them</h2>
   <table>
     <tr><th style="width:30%">Risk</th><th>Mitigation</th></tr>
     <tr><td>Client is slow to send content or approvals</td><td>Launch with clearly marked placeholders, replace them as content arrives.</td></tr>
@@ -218,7 +265,7 @@
     <tr><td>Fake orders or spam</td><td>Server-side validation, the bot trap field on forms, and rate limiting.</td></tr>
   </table>
 
-  <h2>9. Acceptance checklist</h2>
+  <h2>13. Acceptance checklist</h2>
   <ul class="check">
     <li>A customer can place a test order and pay through Square sandbox.</li>
     <li>Order totals are correct and cannot be changed from the browser.</li>
@@ -229,7 +276,7 @@
     <li>The owner has a short guide and knows how to update the location.</li>
   </ul>
 
-  <h2>10. Next steps</h2>
+  <h2>14. Next steps</h2>
   <ol>
     <li>Present the demo at the client meeting on October 14.</li>
     <li>Collect the content and decisions above.</li>
@@ -238,7 +285,7 @@
   </ol>
 
   <footer class="doc">
-    This is a working draft and will change as the client provides content and approvals. Demo link: https://faisaljatt369.github.io/kneebabyz-eatery/
+    This is a working draft and will change as the client provides content and approvals.
   </footer>
 </main>
 </body>
