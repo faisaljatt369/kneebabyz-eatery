@@ -1113,3 +1113,28 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--y
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .cater input:user-invalid, .cater select:user-invalid { border-color: #ff8a8a; }
 @media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
+
+/* dish picker */
+.dish-cat { margin: 14px 0 10px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.dish-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.dish-card { position: relative; display: block; margin: 0; padding: 0; overflow: hidden; border-radius: 14px; border: 2px solid rgba(255, 255, 255, 0.12); background: var(--black); cursor: pointer; color: var(--cream); font-weight: 400; transition: border-color 0.2s ease, transform 0.2s ease; }
+.dish-card:hover { transform: translateY(-3px); border-color: rgba(255, 198, 26, 0.5); }
+.dish-card input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.dish-card:has(input:focus-visible) { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.dish-card:has(input:checked) { border-color: var(--yellow); box-shadow: 0 0 0 3px rgba(255, 198, 26, 0.22); }
+.dish-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.dish-photo.empty { background: linear-gradient(135deg, #1b1b1b, #121212); }
+.dish-name { display: block; padding: 10px 12px; font-size: 0.92rem; font-weight: 600; }
+.dish-state { position: absolute; top: 8px; right: 8px; padding: 3px 10px; border-radius: 999px; background: var(--yellow); color: var(--black); font-size: 0.72rem; font-weight: 700; opacity: 0; transform: scale(0.9); transition: opacity 0.2s ease, transform 0.2s ease; }
+.dish-card:has(input:checked) .dish-state { opacity: 1; transform: none; }
+.dish-unsure { margin-top: 16px; }
+.gallery { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .gallery { grid-template-columns: 1fr 1fr; } }
+.gallery-tile { aspect-ratio: 1 / 1; }
+
+@media (max-width: 600px) {
+  .brand { font-size: 0.95rem; white-space: nowrap; gap: 8px; }
+  .brand-logo { width: 36px; height: 36px; }
+  .nav { gap: 8px; padding-left: 16px; padding-right: 16px; }
+  .nav nav .btn, .nav-toggle { white-space: nowrap; padding: 7px 14px; font-size: 0.85rem; }
+}

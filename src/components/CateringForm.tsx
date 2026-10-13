@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, type FormEvent } from "react";
 import { budgets, callTimes, contactMethods, eventTypes, heardFrom, menu, serviceTypes } from "@/lib/config";
 
@@ -154,20 +155,29 @@ export default function CateringForm() {
       </div>
       <fieldset className="full">
         <legend>Dishes you are interested in</legend>
-        <div className="checks">
-          {menu
-            .flatMap((category) => category.items)
-            .map((item) => (
-              <label key={item.id} className="check">
-                <input type="checkbox" name="dishes" value={item.name} />
-                {item.name}
-              </label>
-            ))}
-          <label className="check">
-            <input type="checkbox" name="dishes" value="Not sure yet" />
-            Not sure yet
-          </label>
-        </div>
+        {menu.map((category) => (
+          <div key={category.name}>
+            <p className="dish-cat">{category.name}</p>
+            <div className="dish-grid">
+              {category.items.map((item) => (
+                <label key={item.id} className="dish-card">
+                  <input type="checkbox" name="dishes" value={item.name} />
+                  {item.image ? (
+                    <Image className="dish-photo" src={item.image} alt="" width={300} height={225} />
+                  ) : (
+                    <span className="dish-photo empty" aria-hidden="true" />
+                  )}
+                  <span className="dish-name">{item.name}</span>
+                  <span className="dish-state">Selected</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        ))}
+        <label className="check dish-unsure">
+          <input type="checkbox" name="dishes" value="Not sure yet" />
+          Not sure yet, help me choose on the call
+        </label>
       </fieldset>
       <div>
         <label htmlFor="c-budget">Approximate budget</label>

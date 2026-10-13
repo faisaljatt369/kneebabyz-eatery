@@ -33,16 +33,19 @@ export const menu: MenuCategory[] = [
   {
     name: "Mains",
     items: [
-      { id: "hot-chicken", image: asset("/images/hero-sandwich.png"), name: "Hot Chicken", description: "Demo price. Dish from the client's Instagram.", priceCents: 1400 },
-      { id: "ribs", image: asset("/images/ribs.png"), name: "Knee Baby'z Ribs", description: "Demo price. Dish from the client's Instagram.", priceCents: 1800 },
-      { id: "burnt-ends", name: "Burnt Ends", description: "Demo price. Dish from the client's Instagram.", priceCents: 1600 },
+      { id: "hot-chicken-sandwich", image: asset("/images/hero-sandwich.png"), name: "Hot Chicken Sandwich", description: "Demo price. Confirm with the client.", priceCents: 1400 },
+      { id: "hot-chicken-mac", image: asset("/images/hot-chicken-mac.png"), name: "Hot Chicken and Mac", description: "Demo price. Confirm with the client.", priceCents: 1500 },
+      { id: "ribs", image: asset("/images/ribs.png"), name: "Knee Baby'z Ribs", description: "Demo price. Confirm with the client.", priceCents: 1800 },
+      { id: "burnt-ends", name: "Burnt Ends", description: "Demo price. Confirm with the client.", priceCents: 1600 },
+      { id: "fish-plate", image: asset("/images/fish-fries.png"), name: "Fried Fish Plate", description: "Demo price. Confirm with the client.", priceCents: 1500 },
     ],
   },
   {
     name: "Sides",
     items: [
-      { id: "candy-yams", name: "Candy Yams", description: "Demo price. Dish from the client's Instagram.", priceCents: 600 },
-      { id: "demo-side", name: "Demo Side", description: "Demo item. Replace with the client's real side.", priceCents: 500 },
+      { id: "loaded-fries", image: asset("/images/loaded-fries.png"), name: "Loaded Fries", description: "Demo price. Confirm with the client.", priceCents: 900 },
+      { id: "candy-yams", name: "Candy Yams", description: "Demo price. Confirm with the client.", priceCents: 600 },
+      { id: "mac-cheese", name: "Mac and Cheese", description: "Demo price. Confirm with the client.", priceCents: 600 },
     ],
   },
 ];
@@ -80,6 +83,8 @@ export const gallery = [
   { src: asset("/images/hot-chicken-mac.png"), alt: "Hot chicken tenders with baked mac and cheese" },
   { src: asset("/images/ribs.png"), alt: "Glazed smoked ribs" },
   { src: asset("/images/grill.png"), alt: "Chef grilling chicken, corn and kebabs" },
+  { src: asset("/images/fish-fries.png"), alt: "Fried fish with fries and mac and cheese" },
+  { src: asset("/images/loaded-fries.png"), alt: "Loaded fries with green onion" },
 ];
 
 export const socials = [
