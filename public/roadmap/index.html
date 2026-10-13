@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Project Roadmap</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #5f5f5f;
+    --line: #dcdcdc;
+    --soft: #f6f6f6;
+    --accent: #b81316;
+  }
+  * { box-sizing: border-box; }
+  html { background: #e9e9e9; }
+  body {
+    margin: 0;
+    padding: 32px 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .page {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 22mm 20mm;
+    background: #fff;
+    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.12);
+  }
+  .doc-head { border-bottom: 3px solid var(--accent); padding-bottom: 18px; margin-bottom: 26px; }
+  .label { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 6px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 6px; }
+  .sub { font-size: 16px; color: var(--muted); margin: 0 0 12px; }
+  .meta { font-size: 13px; color: var(--muted); margin: 0; }
+  h2 { font-size: 19px; margin: 34px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  h3 { font-size: 16px; margin: 0 0 4px; }
+  p { margin: 0 0 10px; }
+  ul { margin: 0 0 12px; padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  .muted { color: var(--muted); }
+
+  .goal { background: var(--soft); border-left: 3px solid var(--accent); padding: 12px 16px; margin: 0 0 14px; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 12px 0 8px; }
+  .step { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+  .step .n { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; margin-bottom: 6px; }
+  .step p { font-size: 13.5px; color: var(--muted); margin: 0; }
+
+  .timeline { position: relative; margin: 14px 0 6px; padding-left: 26px; border-left: 2px solid var(--line); }
+  .phase { position: relative; margin-bottom: 22px; }
+  .phase::before { content: ""; position: absolute; left: -34px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--accent); }
+  .phase .when { font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 2px; }
+  .phase .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 6px; }
+  .phase h4 { font-size: 13px; margin: 0 0 4px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .phase ul { margin: 0; font-size: 14px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 16px; font-size: 14px; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--soft); font-weight: 700; }
+  .box { display: inline-block; width: 14px; height: 14px; border: 1.5px solid var(--muted); border-radius: 3px; vertical-align: -2px; margin-right: 8px; }
+
+  .milestones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0; }
+  .milestone { border-top: 4px solid var(--accent); background: var(--soft); padding: 10px 12px; border-radius: 0 0 6px 6px; }
+  .milestone strong { display: block; font-size: 15px; }
+  .milestone span { font-size: 13px; color: var(--muted); }
+
+  .doc-foot { margin-top: 36px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; }
+  .print-btn { position: fixed; top: 16px; right: 16px; padding: 9px 16px; border: 1px solid #bbb; border-radius: 6px; background: #fff; font: inherit; font-size: 13px; cursor: pointer; }
+  .print-btn:hover { background: var(--soft); }
+  h2, h3 { break-after: avoid; }
+  .phase, table, .goal, .milestone, .step { break-inside: avoid; }
+
+  @media (max-width: 700px) {
+    body { padding: 0; }
+    .page { padding: 20px 16px; box-shadow: none; }
+    .steps, .milestones, .phase .cols { grid-template-columns: 1fr; }
+    .print-btn { display: none; }
+    table { font-size: 13px; }
+    th, td { padding: 6px; }
+  }
+  @media print {
+    html, body { background: #fff; padding: 0; }
+    .page { box-shadow: none; padding: 0; max-width: none; }
+    .print-btn { display: none; }
+    @page { size: A4; margin: 16mm; }
+  }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print or save as PDF</button>
+<main class="page" id="root">
+  <noscript><p>This page needs JavaScript turned on to display.</p></noscript>
+</main>
+
+<script>
+/* =====================================================================
+   EDIT THIS BLOCK FOR EACH CLIENT. Everything on the page comes from it.
+   ===================================================================== */
+const ROADMAP = {
+  company: "Growing With Systems",
+  client: "Kneebabyz Eatery",
+  project: "Website and Owner App",
+  prepared: "October 13, 2026",
+  lead: "Faisal Jatt, Project Lead",
+  contact: "Questions at any point? Reply to the email or message we sent this roadmap in.",
+
+  goal: "Give Kneebabyz Eatery a professional website where customers can see where you are today, order food, and book catering, plus a simple app for you to update your location and see incoming requests.",
+
+  deliverables: [
+    "A branded website in your red, black and yellow, using your logo and photos",
+    "Your food menu with photos and online ordering connected to your Square account",
+    "A link for customers to order on DoorDash",
+    "A catering request form that sends each request to your email",
+    "A live \"Find us today\" banner that you update from your phone",
+    "A page showing your regular spots and schedule",
+    "Your own web address",
+    "A short guide on how to run everything day to day",
+  ],
+
+  process: [
+    { title: "Review", text: "We show you each draft. You tell us what to change." },
+    { title: "Build", text: "We build and connect each feature, one phase at a time." },
+    { title: "Launch", text: "We test everything with you, then go live and stay close for the first week." },
+  ],
+
+  milestones: [
+    { name: "Draft review", date: "Oct 14" },
+    { name: "Location and catering working", date: "Oct 17" },
+    { name: "Online ordering working", date: "Oct 21" },
+    { name: "Website live", date: "Oct 24" },
+  ],
+
+  phases: [
+    {
+      name: "Phase 1: Draft review",
+      when: "October 14",
+      summary: "We walk through the first draft together and agree on what needs to change.",
+      youGet: ["A clear list of changes agreed in the meeting", "A confirmed plan for the remaining phases"],
+      needFromYou: ["Feedback on the look, wording and menu", "Confirmation of your regular spots and hours"],
+    },
+    {
+      name: "Phase 2: Owner tools and catering",
+      when: "October 15 to 17",
+      summary: "We set up the parts only you will use, and make sure catering requests reach you.",
+      youGet: ["A secure owner login", "A button to set where you are today, by address or phone location", "Catering requests sent straight to your email"],
+      needFromYou: ["The email address that should receive catering requests", "A phone to test the owner login with us"],
+    },
+    {
+      name: "Phase 3: Online ordering",
+      when: "October 17 to 21",
+      summary: "Customers can order and pay online, using the Square account you already have.",
+      youGet: ["Online ordering with payment through your Square account", "A DoorDash button for customers who prefer it", "A view of incoming orders with an alert for each new one"],
+      needFromYou: ["Your approval to connect your Square account", "Your DoorDash storefront link"],
+    },
+    {
+      name: "Phase 4: Your content and launch",
+      when: "October 21 to 24",
+      summary: "We replace the sample content with yours, test everything, and go live.",
+      youGet: ["Your real menu, prices, photos and hours on the site", "Your own web address", "Full testing on phones and computers", "A short guide and walkthrough call"],
+      needFromYou: ["Your final menu and prices", "Original logo and photos, and permission to use them", "Your choice of web address"],
+    },
+  ],
+
+  needed: [
+    { item: "Feedback on the first draft", by: "Oct 15" },
+    { item: "Confirmed regular spots and hours", by: "Oct 15" },
+    { item: "Phone number and email you want customers to see", by: "Oct 15" },
+    { item: "Final menu with prices", by: "Oct 16" },
+    { item: "Original logo and best photos, with permission to use them", by: "Oct 16" },
+    { item: "Email address for catering requests", by: "Oct 16" },
+    { item: "Approval and access to connect your Square account", by: "Oct 17" },
+    { item: "DoorDash storefront link", by: "Oct 17" },
+    { item: "Preferred web address", by: "Oct 20" },
+  ],
+
+  afterLaunch: [
+    "We watch orders, forms and errors closely for the first week.",
+    "Fixes for anything we find after launch are covered during an agreed support period (length confirmed before launch).",
+    "You get a short guide and a walkthrough call, so you can update your location and view orders on your own.",
+    "We agree together who holds each account, so nothing lapses after we hand over.",
+  ],
+
+  note: "Dates are targets. They move if content or approvals arrive later than listed, and we will tell you straight away if that happens.",
+};
+/* ===================================================================== */
+
+const root = document.getElementById("root");
+
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function list(items) {
+  const ul = el("ul");
+  items.forEach((text) => ul.append(el("li", "", text)));
+  return ul;
+}
+
+function section(title) {
+  const h = el("h2", "", title);
+  root.append(h);
+}
+
+document.title = `Project Roadmap | ${ROADMAP.client}`;
+
+const head = el("header", "doc-head");
+head.append(
+  el("p", "label", "Project roadmap"),
+  el("h1", "", ROADMAP.client),
+  el("p", "sub", ROADMAP.project),
+  el("p", "meta", `Prepared ${ROADMAP.prepared}  |  ${ROADMAP.lead}  |  ${ROADMAP.company}`),
+);
+root.append(head);
+
+section("Your project at a glance");
+root.append(el("p", "goal", ROADMAP.goal));
+root.append(el("p", "", "What you will have at the end:"));
+root.append(list(ROADMAP.deliverables));
+
+section("How we will work together");
+const steps = el("div", "steps");
+ROADMAP.process.forEach((step, index) => {
+  const box = el("div", "step");
+  box.append(el("span", "n", String(index + 1)), el("h3", "", step.title), el("p", "", step.text));
+  steps.append(box);
+});
+root.append(steps);
+
+section("Key dates");
+const milestones = el("div", "milestones");
+ROADMAP.milestones.forEach((m) => {
+  const box = el("div", "milestone");
+  box.append(el("strong", "", m.date), el("span", "", m.name));
+  milestones.append(box);
+});
+root.append(milestones);
+
+section("Your roadmap, phase by phase");
+const timeline = el("div", "timeline");
+ROADMAP.phases.forEach((phase) => {
+  const box = el("div", "phase");
+  box.append(el("p", "when", phase.when), el("h3", "", phase.name), el("p", "muted", phase.summary));
+  const cols = el("div", "cols");
+  const left = el("div");
+  left.append(el("h4", "", "What you get"), list(phase.youGet));
+  const right = el("div");
+  right.append(el("h4", "", "What we need from you"), list(phase.needFromYou));
+  cols.append(left, right);
+  box.append(cols);
+  timeline.append(box);
+});
+root.append(timeline);
+
+section("Your checklist");
+root.append(el("p", "", "These keep the project on schedule. Send them whenever you have them, even one at a time."));
+const table = el("table");
+const headRow = el("tr");
+["What we need", "Needed by"].forEach((text, i) => {
+  const th = el("th", "", text);
+  if (i === 1) th.style.width = "22%";
+  headRow.append(th);
+});
+table.append(headRow);
+ROADMAP.needed.forEach((row) => {
+  const tr = el("tr");
+  const first = el("td");
+  first.append(el("span", "box"), document.createTextNode(row.item));
+  tr.append(first, el("td", "", row.by));
+  table.append(tr);
+});
+root.append(table);
+
+section("After launch");
+root.append(list(ROADMAP.afterLaunch));
+
+root.append(el("p", "muted", ROADMAP.note));
+
+const foot = el("footer", "doc-foot");
+foot.textContent = `${ROADMAP.contact}`;
+root.append(foot);
+</script>
+</body>
+</html>
