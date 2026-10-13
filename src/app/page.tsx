@@ -1,69 +1,213 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import CateringForm from "@/components/CateringForm";
+import CurrentYear from "@/components/CurrentYear";
+import LocationBanner from "@/components/LocationBanner";
+import RevealOnScroll from "@/components/RevealOnScroll";
+import Menu from "@/components/Menu";
+import { faqs, gallery, highlights, packages, site, socials, steps } from "@/lib/config";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+    <>
+      <RevealOnScroll />
+      <LocationBanner />
+
+      <header className="site-header">
+        <div className="nav">
+          <a className="brand" href="#top">
+            {site.logo ? (
+              <Image className="brand-logo" src={site.logo} alt="" width={44} height={44} />
+            ) : (
+              <span className="brand-mark" aria-hidden="true">
+                K
+              </span>
+            )}
+            {site.name}
           </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          <nav aria-label="Main">
+            <a href="#about">What We Do</a>
+            <a href="#menu">Food Menu</a>
+            <a href="#catering">Catering</a>
+            <a href="#faq">FAQ</a>
+            <a className="btn btn-red btn-sm" href="#menu">
+              Order Now
+            </a>
+          </nav>
         </div>
+      </header>
+
+      <main id="top">
+        <section className="hero">
+          {site.heroImage && <Image className="hero-bg" src={site.heroImage} alt="" fill priority sizes="60vw" />}
+          <div className="wrap hero-grid">
+            <div>
+              <p className="eyebrow">{site.intro}</p>
+              <h1>{site.name}</h1>
+              <p className="hero-sub">{site.tagline}</p>
+              <div className="btn-row">
+                <a className="btn btn-red" href="#menu">
+                  Order Now
+                </a>
+                <a className="btn btn-ghost" href="#catering">
+                  Book Catering
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="stats" aria-label="Highlights">
+          <div className="wrap stats-grid">
+            {highlights.map((item) => (
+              <div key={item.label}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="about">
+          <div className="wrap split">
+            {site.aboutImage ? (
+              <Image className="photo" src={site.aboutImage} alt={`${site.name} food`} width={800} height={600} />
+            ) : (
+              <div className="photo placeholder" role="img" aria-label="Photo coming soon">
+                Photo coming soon
+              </div>
+            )}
+            <div>
+              <h2>What We Do</h2>
+              <p>{site.about}</p>
+              <p>
+                <a className="btn btn-yellow" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
+                  Follow us on Instagram
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="alt">
+          <div className="wrap">
+            <h2>How It Works</h2>
+            <div className="steps">
+              {steps.map((step, index) => (
+                <div key={step.title} className="step">
+                  <span className="step-num">{index + 1}</span>
+                  <h3>{step.title}</h3>
+                  <p className="muted">{step.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="menu">
+          <div className="wrap">
+            <h2>Food Menu</h2>
+            <p className="lead">Fresh, made to order. Prices may vary on delivery apps.</p>
+            <Menu />
+          </div>
+        </section>
+
+        <section className="alt" aria-label="Photo gallery">
+          <div className="wrap">
+            <h2>From Our Kitchen</h2>
+            <p className="lead">A taste of what we are serving. More on our Instagram.</p>
+            <div className="gallery">
+              {gallery.map((item) => (
+                <Image key={item.src} className="gallery-tile" src={item.src} alt={item.alt} width={562} height={562} />
+              ))}
+            </div>
+            <p className="gallery-more">
+              <a className="btn btn-ghost" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
+                See more on Instagram
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section id="catering">
+          <div className="wrap">
+            <h2>Catering</h2>
+            <p className="lead">
+              From small gatherings to big events. Tell us about yours and the chef will follow up with a quote and a
+              call.
+            </p>
+            <div className="packages">
+              {packages.map((pack) => (
+                <div key={pack.name} className="package">
+                  <h3>{pack.name}</h3>
+                  <p className="size">{pack.size}</p>
+                  <p className="muted">{pack.text}</p>
+                </div>
+              ))}
+            </div>
+            <div className="card form-card">
+              <h3>Request a Quote</h3>
+              <CateringForm />
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="alt">
+          <div className="wrap faq-layout">
+            <div>
+              <h2>Questions</h2>
+              <p className="lead">Quick answers about ordering, catering and finding us.</p>
+              <a className="btn btn-yellow" href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>
+                Call {site.phone}
+              </a>
+            </div>
+            <div className="faq-list">
+              {faqs.map((item, index) => (
+                <details key={item.q} className="faq" open={index === 0}>
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
+
+      <footer className="site-footer">
+        <div className="wrap cols">
+          <div>
+            <h3>{site.name}</h3>
+            <p>{site.intro}</p>
+          </div>
+          <div>
+            <h3>Follow Us</h3>
+            <p>
+              {socials.map((item) => (
+                <span key={item.name}>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    {item.name}
+                  </a>
+                  <br />
+                </span>
+              ))}
+            </p>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <p>
+              <a href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>{site.phone}</a>
+              <br />
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </p>
+          </div>
+          <div>
+            <h3>Hours</h3>
+            <p>{site.hours}</p>
+          </div>
+        </div>
+        <p className="wrap copy">
+          &copy; <CurrentYear /> {site.name}. All rights reserved.
+        </p>
+      </footer>
+    </>
   );
 }
