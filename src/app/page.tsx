@@ -1,10 +1,12 @@
 import Image from "next/image";
 import CateringForm from "@/components/CateringForm";
 import CurrentYear from "@/components/CurrentYear";
+import HeaderNav from "@/components/HeaderNav";
+import HeroLocation from "@/components/HeroLocation";
 import LocationBanner from "@/components/LocationBanner";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import Menu from "@/components/Menu";
-import { faqs, gallery, highlights, packages, site, socials, steps } from "@/lib/config";
+import { faqs, gallery, highlights, packages, site, socials, spots, steps } from "@/lib/config";
 
 export default function Home() {
   return (
@@ -24,15 +26,7 @@ export default function Home() {
             )}
             {site.name}
           </a>
-          <nav aria-label="Main">
-            <a href="#about">What We Do</a>
-            <a href="#menu">Food Menu</a>
-            <a href="#catering">Catering</a>
-            <a href="#faq">FAQ</a>
-            <a className="btn btn-red btn-sm" href="#menu">
-              Order Now
-            </a>
-          </nav>
+          <HeaderNav />
         </div>
       </header>
 
@@ -52,6 +46,7 @@ export default function Home() {
                   Book Catering
                 </a>
               </div>
+              <HeroLocation />
             </div>
           </div>
         </section>
@@ -88,7 +83,26 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="alt">
+        <section id="spots" className="alt">
+          <div className="wrap">
+            <h2>Where to Find Us</h2>
+            <p className="lead">We are a pop-up, so we move. Our regular spots are below, and the banner at the top shows where we are today.</p>
+            <div className="spots">
+              {spots.map((spot) => (
+                <div key={spot.name} className="spot">
+                  <h3>{spot.name}</h3>
+                  <p className="when">{spot.when}</p>
+                  <p className="muted">{spot.where}</p>
+                  <a className="btn btn-ghost btn-sm" href={spot.mapUrl} target="_blank" rel="noopener noreferrer">
+                    Get directions
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section>
           <div className="wrap">
             <h2>How It Works</h2>
             <div className="steps">
@@ -103,7 +117,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="menu">
+        <section id="menu" className="alt">
           <div className="wrap">
             <h2>Food Menu</h2>
             <p className="lead">Fresh, made to order. Prices may vary on delivery apps.</p>
@@ -111,7 +125,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="alt" aria-label="Photo gallery">
+        <section aria-label="Photo gallery">
           <div className="wrap">
             <h2>From Our Kitchen</h2>
             <p className="lead">A taste of what we are serving. More on our Instagram.</p>
@@ -128,7 +142,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="catering">
+        <section id="catering" className="alt">
           <div className="wrap">
             <h2>Catering</h2>
             <p className="lead">
@@ -151,7 +165,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="faq" className="alt">
+        <section id="faq">
           <div className="wrap faq-layout">
             <div>
               <h2>Questions</h2>

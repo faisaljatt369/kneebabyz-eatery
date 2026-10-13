@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useReducer, useState } from "react";
 import { menu, site, type MenuItem } from "@/lib/config";
 import { formatPrice } from "@/lib/format";
@@ -36,6 +37,11 @@ export default function Menu() {
             {category.items.map((item) => (
               <div key={item.id} className="menu-item">
                 <div className="menu-info">
+                  {item.image ? (
+                    <Image className="menu-thumb" src={item.image} alt={item.name} width={72} height={72} />
+                  ) : (
+                    <span className="menu-thumb empty" aria-hidden="true" />
+                  )}
                   <div>
                     <strong>{item.name}</strong>
                     <span className="muted">{item.description}</span>

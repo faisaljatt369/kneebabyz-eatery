@@ -5,6 +5,7 @@ export type MenuItem = {
   name: string;
   description: string;
   priceCents: number;
+  image?: string;
 };
 
 export type MenuCategory = {
@@ -22,7 +23,7 @@ export const site = {
   email: "kneebabyz_eatery@gmail.com",
   instagramUrl: "https://www.instagram.com/kneebabyz_eatery/",
   doordashUrl: null as string | null,
-  hours: "Hours vary by location. Check the banner or our Instagram for today's schedule.",
+  hours: "Wednesdays and Thursdays, 11 AM to 4 PM at Oakland Kaiser. Other days vary, so check the banner or our Instagram.",
   logo: asset("/images/logo.png") as string | null,
   heroImage: asset("/images/hero-sandwich.png") as string | null,
   aboutImage: asset("/images/hot-chicken-mac.png") as string | null,
@@ -32,8 +33,8 @@ export const menu: MenuCategory[] = [
   {
     name: "Mains",
     items: [
-      { id: "hot-chicken", name: "Hot Chicken", description: "Demo price. Dish from the client's Instagram.", priceCents: 1400 },
-      { id: "ribs", name: "Knee Baby'z Ribs", description: "Demo price. Dish from the client's Instagram.", priceCents: 1800 },
+      { id: "hot-chicken", image: asset("/images/hero-sandwich.png"), name: "Hot Chicken", description: "Demo price. Dish from the client's Instagram.", priceCents: 1400 },
+      { id: "ribs", image: asset("/images/ribs.png"), name: "Knee Baby'z Ribs", description: "Demo price. Dish from the client's Instagram.", priceCents: 1800 },
       { id: "burnt-ends", name: "Burnt Ends", description: "Demo price. Dish from the client's Instagram.", priceCents: 1600 },
     ],
   },
@@ -85,3 +86,35 @@ export const socials = [
   { name: "Instagram", url: "https://www.instagram.com/kneebabyz_eatery/" },
   { name: "Threads", url: "https://www.threads.net/@kneebabyz_eatery" },
 ];
+
+const mapSearch = (query: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
+export const spots = [
+  {
+    name: "Oakland Kaiser",
+    when: "Wednesdays and Thursdays, 11 AM to 4 PM",
+    where: "Piedmont Ave and West MacArthur Blvd, Oakland",
+    mapUrl: mapSearch("Piedmont Ave and West MacArthur Blvd, Oakland, CA"),
+  },
+  {
+    name: "Faction Brewing",
+    when: "1st Sunday, 2nd Saturday and 3rd Friday of the month",
+    where: "2501 Monarch St, Alameda, CA 94501",
+    mapUrl: mapSearch("2501 Monarch St, Alameda, CA 94501"),
+  },
+];
+
+export const serviceTypes = [
+  { value: "onsite", label: "Pop-up at my event", hint: "We set up and serve on site" },
+  { value: "delivery", label: "Delivery or drop-off", hint: "Food delivered ready to serve" },
+  { value: "pickup", label: "Pickup", hint: "You collect your order" },
+  { value: "unsure", label: "Not sure yet", hint: "Help me decide on the call" },
+];
+
+export const contactMethods = ["Phone call", "Text message", "Email"];
+
+export const callTimes = ["Morning", "Afternoon", "Evening", "Anytime"];
+
+export const budgets = ["Under $500", "$500 to $1,000", "$1,000 to $2,500", "$2,500 to $5,000", "$5,000 or more", "Not sure yet"];
+
+export const heardFrom = ["Instagram", "Friend or family", "Saw you at a pop-up", "Google", "Other"];
