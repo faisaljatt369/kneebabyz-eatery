@@ -1,3 +1,5 @@
+import { asset } from "@/lib/base";
+
 export type MenuItem = {
   id: string;
   name: string;
@@ -21,9 +23,9 @@ export const site = {
   instagramUrl: "https://www.instagram.com/kneebabyz_eatery/",
   doordashUrl: null as string | null,
   hours: "Hours vary by location. Check the banner or our Instagram for today's schedule.",
-  logo: "/images/logo.png" as string | null,
-  heroImage: "/images/hero-sandwich.png" as string | null,
-  aboutImage: "/images/hot-chicken-mac.png" as string | null,
+  logo: asset("/images/logo.png") as string | null,
+  heroImage: asset("/images/hero-sandwich.png") as string | null,
+  aboutImage: asset("/images/hot-chicken-mac.png") as string | null,
 };
 
 export const menu: MenuCategory[] = [
@@ -73,10 +75,10 @@ export const faqs = [
 ];
 
 export const gallery = [
-  { src: "/images/hero-sandwich.png", alt: "Nashville hot chicken sandwich with slaw" },
-  { src: "/images/hot-chicken-mac.png", alt: "Hot chicken tenders with baked mac and cheese" },
-  { src: "/images/ribs.png", alt: "Glazed smoked ribs" },
-  { src: "/images/grill.png", alt: "Chef grilling chicken, corn and kebabs" },
+  { src: asset("/images/hero-sandwich.png"), alt: "Nashville hot chicken sandwich with slaw" },
+  { src: asset("/images/hot-chicken-mac.png"), alt: "Hot chicken tenders with baked mac and cheese" },
+  { src: asset("/images/ribs.png"), alt: "Glazed smoked ribs" },
+  { src: asset("/images/grill.png"), alt: "Chef grilling chicken, corn and kebabs" },
 ];
 
 export const socials = [
