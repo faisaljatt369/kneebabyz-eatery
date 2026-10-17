@@ -72,7 +72,8 @@ export default function Home() {
               </div>
             )}
             <div>
-              <h2>What We Do</h2>
+              <p className="eyebrow">Who we are</p>
+            <h2>What We Do</h2>
               <p>{site.about}</p>
               <p>
                 <a className="btn btn-yellow" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
@@ -85,6 +86,7 @@ export default function Home() {
 
         <section id="spots" className="alt">
           <div className="wrap">
+            <p className="eyebrow">Find us</p>
             <h2>Where to Find Us</h2>
             <p className="lead">We are a pop-up, so we move. Our regular spots are below, and the banner at the top shows where we are today.</p>
             <div className="spots">
@@ -104,6 +106,7 @@ export default function Home() {
 
         <section>
           <div className="wrap">
+            <p className="eyebrow">Simple ordering</p>
             <h2>How It Works</h2>
             <div className="steps">
               {steps.map((step, index) => (
@@ -119,14 +122,16 @@ export default function Home() {
 
         <section id="menu" className="alt">
           <div className="wrap">
+            <p className="eyebrow">Our food</p>
             <h2>Food Menu</h2>
-            <p className="lead">Fresh, made to order. Prices may vary on delivery apps.</p>
+            <p className="lead">Fresh and made to order. Sample prices are shown while the final menu is confirmed.</p>
             <Menu />
           </div>
         </section>
 
         <section aria-label="Photo gallery">
           <div className="wrap">
+            <p className="eyebrow">Fresh off the grill</p>
             <h2>From Our Kitchen</h2>
             <p className="lead">A taste of what we are serving. More on our Instagram.</p>
             <div className="gallery">
@@ -144,6 +149,7 @@ export default function Home() {
 
         <section id="catering" className="alt">
           <div className="wrap">
+            <p className="eyebrow">Events and parties</p>
             <h2>Catering</h2>
             <p className="lead">
               From small gatherings to big events. Tell us about yours and the chef will follow up with a quote and a
@@ -168,7 +174,8 @@ export default function Home() {
         <section id="faq">
           <div className="wrap faq-layout">
             <div>
-              <h2>Questions</h2>
+              <p className="eyebrow">Good to know</p>
+            <h2>Questions</h2>
               <p className="lead">Quick answers about ordering, catering and finding us.</p>
               <a className="btn btn-yellow" href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>
                 Call {site.phone}

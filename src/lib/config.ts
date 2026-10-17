@@ -33,19 +33,19 @@ export const menu: MenuCategory[] = [
   {
     name: "Mains",
     items: [
-      { id: "hot-chicken-sandwich", image: asset("/images/hero-sandwich.png"), name: "Hot Chicken Sandwich", description: "Demo price. Confirm with the client.", priceCents: 1400 },
-      { id: "hot-chicken-mac", image: asset("/images/hot-chicken-mac.png"), name: "Hot Chicken and Mac", description: "Demo price. Confirm with the client.", priceCents: 1500 },
-      { id: "ribs", image: asset("/images/ribs.png"), name: "Knee Baby'z Ribs", description: "Demo price. Confirm with the client.", priceCents: 1800 },
-      { id: "burnt-ends", name: "Burnt Ends", description: "Demo price. Confirm with the client.", priceCents: 1600 },
-      { id: "fish-plate", image: asset("/images/fish-fries.png"), name: "Fried Fish Plate", description: "Demo price. Confirm with the client.", priceCents: 1500 },
+      { id: "hot-chicken-sandwich", image: asset("/images/hero-sandwich.png"), name: "Hot Chicken Sandwich", description: "Crispy hot chicken, creamy slaw, toasted bun.", priceCents: 1400 },
+      { id: "hot-chicken-mac", image: asset("/images/hot-chicken-mac.png"), name: "Hot Chicken and Mac", description: "Hot chicken tenders over baked mac and cheese.", priceCents: 1500 },
+      { id: "ribs", image: asset("/images/ribs.png"), name: "Knee Baby'z Ribs", description: "Smoked low and slow, glazed with house sauce.", priceCents: 1800 },
+      { id: "burnt-ends", name: "Burnt Ends", description: "Smoky, caramelized brisket burnt ends.", priceCents: 1600 },
+      { id: "fish-plate", image: asset("/images/fish-fries.png"), name: "Fried Fish Plate", description: "Crispy fried fish with fries and mac and cheese.", priceCents: 1500 },
     ],
   },
   {
     name: "Sides",
     items: [
-      { id: "loaded-fries", image: asset("/images/loaded-fries.png"), name: "Loaded Fries", description: "Demo price. Confirm with the client.", priceCents: 900 },
-      { id: "candy-yams", name: "Candy Yams", description: "Demo price. Confirm with the client.", priceCents: 600 },
-      { id: "mac-cheese", name: "Mac and Cheese", description: "Demo price. Confirm with the client.", priceCents: 600 },
+      { id: "loaded-fries", image: asset("/images/loaded-fries.png"), name: "Loaded Fries", description: "Fries piled with sauce, seasoning and green onion.", priceCents: 900 },
+      { id: "candy-yams", name: "Candy Yams", description: "Sweet, buttery candied yams.", priceCents: 600 },
+      { id: "mac-cheese", name: "Mac and Cheese", description: "Baked, cheesy macaroni.", priceCents: 600 },
     ],
   },
 ];

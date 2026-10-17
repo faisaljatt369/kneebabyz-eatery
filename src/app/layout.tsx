@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Archivo } from "next/font/google";
 import { asset } from "@/lib/base";
 import { site } from "@/lib/config";
 import "./globals.css";
 
-const body = Inter({ subsets: ["latin"], variable: "--font-body" });
+const body = Archivo({ subsets: ["latin"], variable: "--font-body", axes: ["wdth"] });
 
 export const metadata: Metadata = {
   title: `${site.name} | ${site.tagline}`,
