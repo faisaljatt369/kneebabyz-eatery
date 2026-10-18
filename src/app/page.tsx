@@ -5,9 +5,9 @@ import CurrentYear from "@/components/CurrentYear";
 import HeaderNav from "@/components/HeaderNav";
 import HeroLocation from "@/components/HeroLocation";
 import LocationBanner from "@/components/LocationBanner";
-import RevealOnScroll from "@/components/RevealOnScroll";
 import Menu from "@/components/Menu";
-import { faqs, gallery, highlights, packages, site, socials, spots, steps } from "@/lib/config";
+import RevealOnScroll from "@/components/RevealOnScroll";
+import { faqs, gallery, packages, site, socials, spots, steps } from "@/lib/config";
 
 export default function Home() {
   return (
@@ -53,99 +53,35 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="stats" aria-label="Highlights">
-          <div className="wrap stats-grid">
-            {highlights.map((item) => (
-              <div key={item.label}>
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </div>
-            ))}
+        <section className="quick" aria-label="What we offer">
+          <div className="wrap quick-grid">
+            <a className="quick-card primary" href="#menu">
+              <span className="quick-label">Order food</span>
+              <strong>Our Menu</strong>
+              <p>Hot chicken, ribs, fish plates and sides, made to order.</p>
+              <span className="quick-cta">View the menu</span>
+            </a>
+            <a className="quick-card" href="#catering">
+              <span className="quick-label">Events and parties</span>
+              <strong>Catering</strong>
+              <p>Birthdays, weddings and company events. Tell us the plan and get a quote.</p>
+              <span className="quick-cta">Request a quote</span>
+            </a>
+            <a className="quick-card" href="#spots">
+              <span className="quick-label">We are a pop-up</span>
+              <strong>Find Us Today</strong>
+              <p>Our spot changes. See where we are today and our regular locations.</p>
+              <span className="quick-cta">See locations</span>
+            </a>
           </div>
         </section>
 
-        <section id="about">
-          <div className="wrap split">
-            {site.aboutImage ? (
-              <Image className="photo" src={site.aboutImage} alt={`${site.name} food`} width={800} height={600} />
-            ) : (
-              <div className="photo placeholder" role="img" aria-label="Photo coming soon">
-                Photo coming soon
-              </div>
-            )}
-            <div>
-              <p className="eyebrow">Who we are</p>
-            <h2>What We Do</h2>
-              <p>{site.about}</p>
-              <p>
-                <a className="btn btn-yellow" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
-                  Follow us on Instagram
-                </a>
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="spots" className="alt">
-          <div className="wrap">
-            <p className="eyebrow">Find us</p>
-            <h2>Where to Find Us</h2>
-            <p className="lead">We are a pop-up, so we move. Our regular spots are below, and the banner at the top shows where we are today.</p>
-            <div className="spots">
-              {spots.map((spot) => (
-                <div key={spot.name} className="spot">
-                  <h3>{spot.name}</h3>
-                  <p className="when">{spot.when}</p>
-                  <p className="muted">{spot.where}</p>
-                  <a className="btn btn-ghost btn-sm" href={spot.mapUrl} target="_blank" rel="noopener noreferrer">
-                    Get directions
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div className="wrap">
-            <p className="eyebrow">Simple ordering</p>
-            <h2>How It Works</h2>
-            <div className="steps">
-              {steps.map((step, index) => (
-                <div key={step.title} className="step">
-                  <span className="step-num">{index + 1}</span>
-                  <h3>{step.title}</h3>
-                  <p className="muted">{step.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="menu" className="alt">
+        <section id="menu" className="menu-section">
           <div className="wrap">
             <p className="eyebrow">Our food</p>
-            <h2>Food Menu</h2>
+            <h2>Our Menu</h2>
             <p className="lead">Fresh and made to order. Sample prices are shown while the final menu is confirmed.</p>
             <Menu />
-          </div>
-        </section>
-
-        <section aria-label="Photo gallery">
-          <div className="wrap">
-            <p className="eyebrow">Fresh off the grill</p>
-            <h2>From Our Kitchen</h2>
-            <p className="lead">A taste of what we are serving. More on our Instagram.</p>
-            <div className="gallery">
-              {gallery.map((item) => (
-                <Image key={item.src} className="gallery-tile" src={item.src} alt={item.alt} width={562} height={562} />
-              ))}
-            </div>
-            <p className="gallery-more">
-              <a className="btn btn-ghost" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
-                See more on Instagram
-              </a>
-            </p>
           </div>
         </section>
 
@@ -173,11 +109,90 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="spots">
+          <div className="wrap">
+            <p className="eyebrow">Find us</p>
+            <h2>Where to Find Us</h2>
+            <p className="lead">
+              We are a pop-up, so we move. Our regular spots are below, and the banner at the top shows where we are
+              today.
+            </p>
+            <div className="spots">
+              {spots.map((spot) => (
+                <div key={spot.name} className="spot">
+                  <h3>{spot.name}</h3>
+                  <p className="when">{spot.when}</p>
+                  <p className="muted">{spot.where}</p>
+                  <a className="btn btn-ghost btn-sm" href={spot.mapUrl} target="_blank" rel="noopener noreferrer">
+                    Get directions
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="alt">
+          <div className="wrap split">
+            {site.aboutImage ? (
+              <Image className="photo" src={site.aboutImage} alt={`${site.name} food`} width={800} height={600} />
+            ) : (
+              <div className="photo placeholder" role="img" aria-label="Photo coming soon">
+                Photo coming soon
+              </div>
+            )}
+            <div>
+              <p className="eyebrow">Who we are</p>
+              <h2>What We Do</h2>
+              <p>{site.about}</p>
+              <p>
+                <a className="btn btn-yellow" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
+                  Follow us on Instagram
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-label="Photo gallery">
+          <div className="wrap">
+            <p className="eyebrow">Fresh off the grill</p>
+            <h2>From Our Kitchen</h2>
+            <p className="lead">A taste of what we are serving. More on our Instagram.</p>
+            <div className="gallery">
+              {gallery.map((item) => (
+                <Image key={item.src} className="gallery-tile" src={item.src} alt={item.alt} width={562} height={562} />
+              ))}
+            </div>
+            <p className="gallery-more">
+              <a className="btn btn-ghost" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
+                See more on Instagram
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section className="alt">
+          <div className="wrap">
+            <p className="eyebrow">Simple ordering</p>
+            <h2>How It Works</h2>
+            <div className="steps">
+              {steps.map((step, index) => (
+                <div key={step.title} className="step">
+                  <span className="step-num">{index + 1}</span>
+                  <h3>{step.title}</h3>
+                  <p className="muted">{step.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="faq">
           <div className="wrap faq-layout">
             <div>
               <p className="eyebrow">Good to know</p>
-            <h2>Questions</h2>
+              <h2>Questions</h2>
               <p className="lead">Quick answers about ordering, catering and finding us.</p>
               <a className="btn btn-yellow" href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>
                 Call {site.phone}

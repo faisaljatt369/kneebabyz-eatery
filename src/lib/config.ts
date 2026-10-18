@@ -6,6 +6,7 @@ export type MenuItem = {
   description: string;
   priceCents: number;
   image?: string;
+  featured?: boolean;
 };
 
 export type MenuCategory = {
@@ -33,9 +34,9 @@ export const menu: MenuCategory[] = [
   {
     name: "Mains",
     items: [
-      { id: "hot-chicken-sandwich", image: asset("/images/hero-sandwich.png"), name: "Hot Chicken Sandwich", description: "Crispy hot chicken, creamy slaw, toasted bun.", priceCents: 1400 },
-      { id: "hot-chicken-mac", image: asset("/images/hot-chicken-mac.png"), name: "Hot Chicken and Mac", description: "Hot chicken tenders over baked mac and cheese.", priceCents: 1500 },
-      { id: "ribs", image: asset("/images/ribs.png"), name: "Knee Baby'z Ribs", description: "Smoked low and slow, glazed with house sauce.", priceCents: 1800 },
+      { id: "hot-chicken-sandwich", featured: true, image: asset("/images/hero-sandwich.png"), name: "Hot Chicken Sandwich", description: "Crispy hot chicken, creamy slaw, toasted bun.", priceCents: 1400 },
+      { id: "hot-chicken-mac", featured: true, image: asset("/images/hot-chicken-mac.png"), name: "Hot Chicken and Mac", description: "Hot chicken tenders over baked mac and cheese.", priceCents: 1500 },
+      { id: "ribs", featured: true, image: asset("/images/ribs.png"), name: "Knee Baby'z Ribs", description: "Smoked low and slow, glazed with house sauce.", priceCents: 1800 },
       { id: "burnt-ends", name: "Burnt Ends", description: "Smoky, caramelized brisket burnt ends.", priceCents: 1600 },
       { id: "fish-plate", image: asset("/images/fish-fries.png"), name: "Fried Fish Plate", description: "Crispy fried fish with fries and mac and cheese.", priceCents: 1500 },
     ],
