@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 import { site } from "@/lib/config";
 
+// Same order as the sections on the page.
 const items = [
   { label: "Home", id: "top", href: "#top" },
   { label: "Menu", id: "menu", href: "#menu" },
-  { label: "Find Us", id: "spots", href: "#spots" },
   { label: "Catering", id: "catering", href: "#catering" },
+  { label: "Find Us", id: "spots", href: "#spots" },
 ];
 
 // App-style bar fixed to the bottom on phones and small screens. Highlights the section currently in view.
@@ -15,21 +16,31 @@ export default function BottomNav() {
   const [active, setActive] = useState("top");
 
   useEffect(() => {
-    const targets = items
-      .map((item) => document.getElementById(item.id))
-      .filter((node): node is HTMLElement => node !== null);
-    if (targets.length === 0 || !("IntersectionObserver" in window)) return;
+    let frame = 0;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px" },
-    );
-    targets.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
+    // The active item is the last section whose top has passed the middle of the screen, so scrolling back up to the hero returns to Home.
+    const update = () => {
+      frame = 0;
+      const line = window.innerHeight * 0.45;
+      let current = "top";
+      for (const item of items.slice(1)) {
+        const node = document.getElementById(item.id);
+        if (node && node.getBoundingClientRect().top <= line) current = item.id;
+      }
+      setActive(current);
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
