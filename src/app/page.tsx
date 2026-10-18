@@ -13,7 +13,6 @@ export default function Home() {
   return (
     <>
       <RevealOnScroll />
-      <BottomNav />
       <LocationBanner />
 
       <header className="site-header">
@@ -246,6 +245,8 @@ export default function Home() {
           &copy; <CurrentYear /> {site.name}. All rights reserved.
         </p>
       </footer>
+
+      <BottomNav />
     </>
   );
 }
