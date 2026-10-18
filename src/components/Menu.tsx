@@ -68,11 +68,7 @@ export default function Menu() {
             {category.items.map((item) => (
               <div key={item.id} className="menu-item">
                 <div className="menu-info">
-                  {item.image ? (
-                    <Image className="menu-thumb" src={item.image} alt={item.name} width={72} height={72} />
-                  ) : (
-                    <span className="menu-thumb empty" aria-hidden="true" />
-                  )}
+                  {item.image && <Image className="menu-thumb" src={item.image} alt={item.name} width={88} height={88} />}
                   <div>
                     <strong>{item.name}</strong>
                     <span className="muted">{item.description}</span>

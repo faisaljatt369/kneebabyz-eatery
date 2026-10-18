@@ -474,3 +474,8 @@ fieldset { border: 0; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* items without a photo yet show as clean text rows, never as empty boxes */
+.dish-card.no-photo { display: flex; align-items: flex-end; min-height: 90px; }
+.dish-card.no-photo .dish-name { padding: 14px; font-family: var(--display); font-variation-settings: "wdth" 78; font-size: 1.15rem; font-weight: 800; text-transform: uppercase; line-height: 1.1; }
+.dish-card.no-photo .dish-state { top: 8px; }

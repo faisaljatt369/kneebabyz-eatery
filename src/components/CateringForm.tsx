@@ -168,13 +168,9 @@ export default function CateringForm() {
             <p className="dish-cat">{category.name}</p>
             <div className="dish-grid">
               {category.items.map((item) => (
-                <label key={item.id} className="dish-card">
+                <label key={item.id} className={item.image ? "dish-card" : "dish-card no-photo"}>
                   <input type="checkbox" name="dishes" value={item.name} />
-                  {item.image ? (
-                    <Image className="dish-photo" src={item.image} alt="" width={300} height={225} />
-                  ) : (
-                    <span className="dish-photo empty" aria-hidden="true" />
-                  )}
+                  {item.image && <Image className="dish-photo" src={item.image} alt="" width={300} height={225} />}
                   <span className="dish-name">{item.name}</span>
                   <span className="dish-state">Selected</span>
                 </label>

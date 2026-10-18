@@ -44,8 +44,8 @@ export const menu: MenuCategory[] = [
     name: "Sides",
     items: [
       { id: "loaded-fries", image: asset("/images/loaded-fries.png"), name: "Loaded Fries", description: "Fries piled with sauce, seasoning and green onion.", priceCents: 900 },
-      { id: "candy-yams", name: "Candy Yams", description: "Sweet, buttery candied yams.", priceCents: 600 },
-      { id: "mac-cheese", name: "Mac and Cheese", description: "Baked, cheesy macaroni.", priceCents: 600 },
+      { id: "candy-yams", image: asset("/images/candy-yams.png"), name: "Candy Yams", description: "Sweet, buttery candied yams.", priceCents: 600 },
+      { id: "mac-cheese", image: asset("/images/mac-cheese.png"), name: "Mac and Cheese", description: "Baked, cheesy macaroni.", priceCents: 600 },
     ],
   },
 ];
