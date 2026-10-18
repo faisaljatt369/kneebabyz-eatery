@@ -1,6 +1,4 @@
-"use client";
-
-import { useState } from "react";
+import { site } from "@/lib/config";
 
 const links = [
   { label: "What We Do", href: "#about" },
@@ -10,24 +8,23 @@ const links = [
   { label: "FAQ", href: "#faq" },
 ];
 
+// Desktop navigation. On small screens the links move to the bottom bar (BottomNav), so only a Call link stays up here.
 export default function HeaderNav() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <nav aria-label="Main" className={open ? "open" : ""}>
+    <nav aria-label="Main">
       <div className="nav-links">
         {links.map((link) => (
-          <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+          <a key={link.href} href={link.href}>
             {link.label}
           </a>
         ))}
       </div>
-      <a className="btn btn-red btn-sm" href="#menu">
+      <a className="btn btn-red btn-sm nav-order" href="#menu">
         Order Now
       </a>
-      <button type="button" className="nav-toggle" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
-        {open ? "Close" : "Menu"}
-      </button>
+      <a className="nav-call" href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>
+        Call {site.phone}
+      </a>
     </nav>
   );
 }

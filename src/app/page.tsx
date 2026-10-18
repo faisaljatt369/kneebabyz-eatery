@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BottomNav from "@/components/BottomNav";
 import CateringForm from "@/components/CateringForm";
 import CurrentYear from "@/components/CurrentYear";
 import HeaderNav from "@/components/HeaderNav";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <>
       <RevealOnScroll />
+      <BottomNav />
       <LocationBanner />
 
       <header className="site-header">
